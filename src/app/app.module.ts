@@ -13,20 +13,15 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {ChartsModule} from 'ng2-charts';
-import { ChartComponent } from './chart/chart.component'
 import { MatCheckboxModule } from '@angular/material/checkbox'
-import { SampleComponent } from './sample/sample.component';
-import { ToggleComponent } from './toggle/toggle.component';
 import { NgChartjsModule } from 'ng-chartjs';
-
+import { environment } from 'src/environments/environment';
+import { AngularFireModule } from '@angular/fire';
 
 @NgModule({
   declarations: [
     AppComponent,
     SchoolComponent,
-    ChartComponent,
-    SampleComponent,
-    ToggleComponent
   ],
   imports: [
     BrowserModule,
@@ -40,12 +35,10 @@ import { NgChartjsModule } from 'ng-chartjs';
     MatFormFieldModule,
     MatCheckboxModule,
     MatInputModule,
+    AngularFireModule.initializeApp(environment.firebase),
     RouterModule.forRoot([
       { path: '', component: SchoolComponent },
       { path: 'school', component: SchoolComponent},
-      { path: 'chart', component: ChartComponent},
-      { path: 'sample', component: SampleComponent},
-      { path: 'toggle', component: ToggleComponent},
     ]),
   ],
   providers: [DataService],
