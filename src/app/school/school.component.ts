@@ -24,7 +24,7 @@ export class SchoolComponent implements OnInit {
   barChartLegend = true;
   barChartData = [];
   chartData = [];
-  @ViewChild(BaseChartDirective) _chart;
+  @ViewChild(BaseChartDirective, { static: true}) _chart;
 
 
   constructor(private data: DataService) {
@@ -33,6 +33,7 @@ export class SchoolComponent implements OnInit {
 
   async ngOnInit() {
     await this.data.brojOdeljenja().subscribe(d => {
+      console.log(d);
       this.dataSource.data = d;
       Object.getOwnPropertyNames(d[0]).forEach(el => this.displayedColumns.push(el));
       this.barChartLabels = this.displayedColumns.slice(3);
